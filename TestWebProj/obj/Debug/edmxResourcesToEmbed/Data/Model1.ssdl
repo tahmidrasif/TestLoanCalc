@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankingAppModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="BankingAppModelStoreContainer">
+    <EntitySet Name="Command" EntityType="BankingAppModel.Store.Command" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employee" EntityType="BankingAppModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LoanSchedule" EntityType="BankingAppModel.Store.LoanSchedule" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menu" EntityType="BankingAppModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuProperty" EntityType="BankingAppModel.Store.MenuProperty" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Property" EntityType="BankingAppModel.Store.Property" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PropertyCommand" EntityType="BankingAppModel.Store.PropertyCommand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role" EntityType="BankingAppModel.Store.Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleCommand" EntityType="BankingAppModel.Store.RoleCommand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleMenu" EntityType="BankingAppModel.Store.RoleMenu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleProperty" EntityType="BankingAppModel.Store.RoleProperty" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblAccounts" EntityType="BankingAppModel.Store.tblAccounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblTransaction" EntityType="BankingAppModel.Store.tblTransaction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="BankingAppModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRole" EntityType="BankingAppModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuView" EntityType="BankingAppModel.Store.MenuView" store:Type="Views" store:Schema="dbo" store:Name="MenuView">
+      <DefiningQuery>SELECT 
+      [MenuView].[ID] AS [ID], 
+      [MenuView].[MenuName] AS [MenuName], 
+      [MenuView].[ParentID] AS [ParentID], 
+      [MenuView].[MenuOrder] AS [MenuOrder], 
+      [MenuView].[PropertyName] AS [PropertyName], 
+      [MenuView].[RoleName] AS [RoleName]
+      FROM [dbo].[MenuView] AS [MenuView]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <EntityType Name="Command">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="CommandName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+    <Property Name="ManagerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LoanSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LoanAccountNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InstallmentNo" Type="int" />
+    <Property Name="EMIDate" Type="datetime" />
+    <Property Name="BegningBalance" Type="float" />
+    <Property Name="SchedulePaymentAmt" Type="float" />
+    <Property Name="PrincipalAmt" Type="float" />
+    <Property Name="InterestAmt" Type="float" />
+    <Property Name="PaidAmt" Type="float" />
+    <Property Name="PrincipalPaid" Type="float" />
+    <Property Name="InterestPaid" Type="float" />
+    <Property Name="OverDueAmount" Type="float" />
+    <Property Name="PricipalOverDue" Type="float" />
+    <Property Name="InterestOverDue" Type="float" />
+    <Property Name="AdvanceAmount" Type="float" />
+    <Property Name="PrincepalAdvance" Type="float" />
+    <Property Name="InterestAdvance" Type="float" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentID" Type="bigint" />
+    <Property Name="MenuOrder" Type="int" />
+  </EntityType>
+  <EntityType Name="MenuProperty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PropertyCommand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommandName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoleCommand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommandName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoleMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoleProperty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblAccounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AccountType" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblTransaction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="TxnType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="CrDr" Type="nvarchar" MaxLength="50" />
+    <Property Name="Particular" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'BankingApp.dbo.MenuView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="MenuView">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentID" Type="bigint" />
+    <Property Name="MenuOrder" Type="int" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BankingAppModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BankingAppModelStoreContainer">
+          <EntitySet Name="Command" EntityType="BankingAppModel.Store.Command" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="BankingAppModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoanSchedule" EntityType="BankingAppModel.Store.LoanSchedule" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menu" EntityType="BankingAppModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MenuProperty" EntityType="BankingAppModel.Store.MenuProperty" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Property" EntityType="BankingAppModel.Store.Property" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PropertyCommand" EntityType="BankingAppModel.Store.PropertyCommand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="BankingAppModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleCommand" EntityType="BankingAppModel.Store.RoleCommand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleMenu" EntityType="BankingAppModel.Store.RoleMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleProperty" EntityType="BankingAppModel.Store.RoleProperty" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAccounts" EntityType="BankingAppModel.Store.tblAccounts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTransaction" EntityType="BankingAppModel.Store.tblTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="BankingAppModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRole" EntityType="BankingAppModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MenuView" EntityType="BankingAppModel.Store.MenuView" store:Type="Views" store:Schema="dbo" store:Name="MenuView">
+            <DefiningQuery>SELECT 
+      [MenuView].[ID] AS [ID], 
+      [MenuView].[MenuName] AS [MenuName], 
+      [MenuView].[ParentID] AS [ParentID], 
+      [MenuView].[MenuOrder] AS [MenuOrder], 
+      [MenuView].[PropertyName] AS [PropertyName], 
+      [MenuView].[RoleName] AS [RoleName]
+      FROM [dbo].[MenuView] AS [MenuView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="Command">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="CommandName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="ManagerID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="LoanSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoanAccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstallmentNo" Type="int" />
+          <Property Name="EMIDate" Type="datetime" />
+          <Property Name="BegningBalance" Type="float" />
+          <Property Name="SchedulePaymentAmt" Type="float" />
+          <Property Name="PrincipalAmt" Type="float" />
+          <Property Name="InterestAmt" Type="float" />
+          <Property Name="PaidAmt" Type="float" />
+          <Property Name="PrincipalPaid" Type="float" />
+          <Property Name="InterestPaid" Type="float" />
+          <Property Name="OverDueAmount" Type="float" />
+          <Property Name="PricipalOverDue" Type="float" />
+          <Property Name="InterestOverDue" Type="float" />
+          <Property Name="AdvanceAmount" Type="float" />
+          <Property Name="PrincepalAdvance" Type="float" />
+          <Property Name="InterestAdvance" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="MenuOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuProperty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PropertyCommand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommandName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoleCommand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommandName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoleMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoleProperty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAccounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TxnType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Balance" Type="float" />
+          <Property Name="CrDr" Type="nvarchar" MaxLength="50" />
+          <Property Name="Particular" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BankingApp.dbo.MenuView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MenuView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="MenuOrder" Type="int" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BankingAppModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BankingAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Command" EntityType="BankingAppModel.Command" />
+          <EntitySet Name="Employee" EntityType="BankingAppModel.Employee" />
+          <EntitySet Name="LoanSchedule" EntityType="BankingAppModel.LoanSchedule" />
+          <EntitySet Name="Menu" EntityType="BankingAppModel.Menu" />
+          <EntitySet Name="MenuProperty" EntityType="BankingAppModel.MenuProperty" />
+          <EntitySet Name="Property" EntityType="BankingAppModel.Property" />
+          <EntitySet Name="PropertyCommand" EntityType="BankingAppModel.PropertyCommand" />
+          <EntitySet Name="Role" EntityType="BankingAppModel.Role" />
+          <EntitySet Name="RoleCommand" EntityType="BankingAppModel.RoleCommand" />
+          <EntitySet Name="RoleMenu" EntityType="BankingAppModel.RoleMenu" />
+          <EntitySet Name="tblAccounts" EntityType="BankingAppModel.tblAccounts" />
+          <EntitySet Name="tblTransaction" EntityType="BankingAppModel.tblTransaction" />
+          <EntitySet Name="User" EntityType="BankingAppModel.User" />
+          <EntitySet Name="UserRole" EntityType="BankingAppModel.UserRole" />
+          <EntitySet Name="MenuView" EntityType="BankingAppModel.MenuView" />
+          <EntitySet Name="RoleProperty" EntityType="BankingAppModel.RoleProperty" />
+        </EntityContainer>
+        <EntityType Name="Command">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CommandName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="ManagerID" />
+        </EntityType>
+        <EntityType Name="LoanSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LoanAccountNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="InstallmentNo" />
+          <Property Type="DateTime" Name="EMIDate" />
+          <Property Type="Double" Name="BegningBalance" />
+          <Property Type="Double" Name="SchedulePaymentAmt" />
+          <Property Type="Double" Name="PrincipalAmt" />
+          <Property Type="Double" Name="InterestAmt" />
+          <Property Type="Double" Name="PaidAmt" />
+          <Property Type="Double" Name="PrincipalPaid" />
+          <Property Type="Double" Name="InterestPaid" />
+          <Property Type="Double" Name="OverDueAmount" />
+          <Property Type="Double" Name="PricipalOverDue" />
+          <Property Type="Double" Name="InterestOverDue" />
+          <Property Type="Double" Name="AdvanceAmount" />
+          <Property Type="Double" Name="PrincepalAdvance" />
+          <Property Type="Double" Name="InterestAdvance" />
+          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="ParentID" />
+          <Property Type="Int32" Name="MenuOrder" />
+        </EntityType>
+        <EntityType Name="MenuProperty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PropertyCommand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CommandName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoleCommand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CommandName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoleMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblAccounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AccountType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccountName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccountNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AccountNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TxnType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Amount" />
+          <Property Type="DateTime" Name="Date" />
+          <Property Type="Double" Name="Balance" />
+          <Property Type="String" Name="CrDr" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Particular" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MenuView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="ParentID" />
+          <Property Type="Int32" Name="MenuOrder" />
+          <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoleProperty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BankingAppModelStoreContainer" CdmEntityContainer="BankingAppEntities">
+          <EntitySetMapping Name="Command">
+            <EntityTypeMapping TypeName="BankingAppModel.Command">
+              <MappingFragment StoreEntitySet="Command">
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="BankingAppModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanSchedule">
+            <EntityTypeMapping TypeName="BankingAppModel.LoanSchedule">
+              <MappingFragment StoreEntitySet="LoanSchedule">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InterestAdvance" ColumnName="InterestAdvance" />
+                <ScalarProperty Name="PrincepalAdvance" ColumnName="PrincepalAdvance" />
+                <ScalarProperty Name="AdvanceAmount" ColumnName="AdvanceAmount" />
+                <ScalarProperty Name="InterestOverDue" ColumnName="InterestOverDue" />
+                <ScalarProperty Name="PricipalOverDue" ColumnName="PricipalOverDue" />
+                <ScalarProperty Name="OverDueAmount" ColumnName="OverDueAmount" />
+                <ScalarProperty Name="InterestPaid" ColumnName="InterestPaid" />
+                <ScalarProperty Name="PrincipalPaid" ColumnName="PrincipalPaid" />
+                <ScalarProperty Name="PaidAmt" ColumnName="PaidAmt" />
+                <ScalarProperty Name="InterestAmt" ColumnName="InterestAmt" />
+                <ScalarProperty Name="PrincipalAmt" ColumnName="PrincipalAmt" />
+                <ScalarProperty Name="SchedulePaymentAmt" ColumnName="SchedulePaymentAmt" />
+                <ScalarProperty Name="BegningBalance" ColumnName="BegningBalance" />
+                <ScalarProperty Name="EMIDate" ColumnName="EMIDate" />
+                <ScalarProperty Name="InstallmentNo" ColumnName="InstallmentNo" />
+                <ScalarProperty Name="LoanAccountNo" ColumnName="LoanAccountNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="BankingAppModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuProperty">
+            <EntityTypeMapping TypeName="BankingAppModel.MenuProperty">
+              <MappingFragment StoreEntitySet="MenuProperty">
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property">
+            <EntityTypeMapping TypeName="BankingAppModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertyCommand">
+            <EntityTypeMapping TypeName="BankingAppModel.PropertyCommand">
+              <MappingFragment StoreEntitySet="PropertyCommand">
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="BankingAppModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleCommand">
+            <EntityTypeMapping TypeName="BankingAppModel.RoleCommand">
+              <MappingFragment StoreEntitySet="RoleCommand">
+                <ScalarProperty Name="CommandName" ColumnName="CommandName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMenu">
+            <EntityTypeMapping TypeName="BankingAppModel.RoleMenu">
+              <MappingFragment StoreEntitySet="RoleMenu">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="BankingAppModel.tblAccounts">
+              <MappingFragment StoreEntitySet="tblAccounts">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransaction">
+            <EntityTypeMapping TypeName="BankingAppModel.tblTransaction">
+              <MappingFragment StoreEntitySet="tblTransaction">
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+                <ScalarProperty Name="CrDr" ColumnName="CrDr" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TxnType" ColumnName="TxnType" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="BankingAppModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="BankingAppModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuView">
+            <EntityTypeMapping TypeName="BankingAppModel.MenuView">
+              <MappingFragment StoreEntitySet="MenuView">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleProperty">
+            <EntityTypeMapping TypeName="BankingAppModel.RoleProperty">
+              <MappingFragment StoreEntitySet="RoleProperty">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="BankingAppModel.Command" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="BankingAppModel.Employee" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BankingAppModel.LoanSchedule" Width="1.5" PointX="0.75" PointY="3.75" Height="4.4802050781250031" />
+        <EntityTypeShape EntityType="BankingAppModel.Menu" Width="1.5" PointX="2.75" PointY="3.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BankingAppModel.MenuProperty" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="BankingAppModel.Property" Width="1.5" PointX="4.75" PointY="3.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="BankingAppModel.PropertyCommand" Width="1.5" PointX="6.75" PointY="0.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="BankingAppModel.Role" Width="1.5" PointX="2.75" PointY="6.75" Height="1.4033821614583282" />
+        <EntityTypeShape EntityType="BankingAppModel.RoleCommand" Width="1.5" PointX="6.75" PointY="3.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="BankingAppModel.RoleMenu" Width="1.5" PointX="4.75" PointY="6.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="BankingAppModel.tblAccounts" Width="1.5" PointX="6.75" PointY="6.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="BankingAppModel.tblTransaction" Width="1.5" PointX="8.75" PointY="0.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="BankingAppModel.User" Width="1.5" PointX="8.75" PointY="4.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="BankingAppModel.UserRole" Width="1.5" PointX="8.75" PointY="7.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="BankingAppModel.MenuView" Width="1.5" PointX="0.75" PointY="9.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="BankingAppModel.RoleProperty" Width="1.5" PointX="3.375" PointY="9.75" Height="1.5956835937500031" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

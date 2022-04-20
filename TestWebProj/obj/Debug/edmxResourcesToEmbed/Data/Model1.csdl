@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankingAppModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="BankingAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Command" EntityType="BankingAppModel.Command" />
+    <EntitySet Name="Employee" EntityType="BankingAppModel.Employee" />
+    <EntitySet Name="LoanSchedule" EntityType="BankingAppModel.LoanSchedule" />
+    <EntitySet Name="Menu" EntityType="BankingAppModel.Menu" />
+    <EntitySet Name="MenuProperty" EntityType="BankingAppModel.MenuProperty" />
+    <EntitySet Name="Property" EntityType="BankingAppModel.Property" />
+    <EntitySet Name="PropertyCommand" EntityType="BankingAppModel.PropertyCommand" />
+    <EntitySet Name="Role" EntityType="BankingAppModel.Role" />
+    <EntitySet Name="RoleCommand" EntityType="BankingAppModel.RoleCommand" />
+    <EntitySet Name="RoleMenu" EntityType="BankingAppModel.RoleMenu" />
+    <EntitySet Name="tblAccounts" EntityType="BankingAppModel.tblAccounts" />
+    <EntitySet Name="tblTransaction" EntityType="BankingAppModel.tblTransaction" />
+    <EntitySet Name="User" EntityType="BankingAppModel.User" />
+    <EntitySet Name="UserRole" EntityType="BankingAppModel.UserRole" />
+    <EntitySet Name="MenuView" EntityType="BankingAppModel.MenuView" />
+    <EntitySet Name="RoleProperty" EntityType="BankingAppModel.RoleProperty" />
+  </EntityContainer>
+  <EntityType Name="Command">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="CommandName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Designation" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="ManagerID" />
+  </EntityType>
+  <EntityType Name="LoanSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LoanAccountNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="InstallmentNo" />
+    <Property Type="DateTime" Name="EMIDate" />
+    <Property Type="Double" Name="BegningBalance" />
+    <Property Type="Double" Name="SchedulePaymentAmt" />
+    <Property Type="Double" Name="PrincipalAmt" />
+    <Property Type="Double" Name="InterestAmt" />
+    <Property Type="Double" Name="PaidAmt" />
+    <Property Type="Double" Name="PrincipalPaid" />
+    <Property Type="Double" Name="InterestPaid" />
+    <Property Type="Double" Name="OverDueAmount" />
+    <Property Type="Double" Name="PricipalOverDue" />
+    <Property Type="Double" Name="InterestOverDue" />
+    <Property Type="Double" Name="AdvanceAmount" />
+    <Property Type="Double" Name="PrincepalAdvance" />
+    <Property Type="Double" Name="InterestAdvance" />
+    <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="ParentID" />
+    <Property Type="Int32" Name="MenuOrder" />
+  </EntityType>
+  <EntityType Name="MenuProperty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PropertyCommand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CommandName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RoleCommand">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CommandName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RoleMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblAccounts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AccountType" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AccountName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AccountNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsActive" />
+  </EntityType>
+  <EntityType Name="tblTransaction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AccountNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TxnType" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="Amount" />
+    <Property Type="DateTime" Name="Date" />
+    <Property Type="Double" Name="Balance" />
+    <Property Type="String" Name="CrDr" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Particular" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MenuView">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="MenuName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="ParentID" />
+    <Property Type="Int32" Name="MenuOrder" />
+    <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RoleProperty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PropertyName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RoleName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
